@@ -8,7 +8,7 @@ using MongoDB.Bson.Serialization;
 using msskillslab.MongoDBHelper;
 using msskillslab.Models;
 
-namespace WebApplication3.Controllers
+namespace msskillslab.Controllers
 {
     [Route("[controller]")]
     [ApiController]

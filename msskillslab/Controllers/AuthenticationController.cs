@@ -5,7 +5,7 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using msskillslab.MongoDBHelper;
 
-namespace WebApplication3.Controllers
+namespace msskillslab.Controllers
 {
     [Route("[controller]")]
     [ApiController]

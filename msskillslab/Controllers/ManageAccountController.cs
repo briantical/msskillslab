@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using msskillslab.MongoDBHelper;
 
-namespace WebApplication3.Controllers
+namespace msskillslab.Controllers
 {
     [Route("[controller]")]
     [ApiController]

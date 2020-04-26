@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Authentication;
+using System.Threading.Tasks;
 using Microsoft.Azure.KeyVault;
 using Microsoft.Azure.Services.AppAuthentication;
 using MongoDB.Bson;
@@ -12,7 +14,6 @@ namespace msskillslab.MongoDBHelper
     {
         public static MongoDBHelperSingleton instance = null;
         private MongoClient client;
-
         private string password;
         private string userName;
         private string host;
@@ -21,9 +22,7 @@ namespace msskillslab.MongoDBHelper
         private MongoDBHelperSingleton()
         {
             AzureServiceTokenProvider azureServiceTokenProvider = new AzureServiceTokenProvider();
-
             KeyVaultClient keyVaultClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
-
             password = keyVaultClient.GetSecretAsync("https://msskillslab-keyvault.vault.azure.net/secrets/DBPassword").Result.Value;
             userName = keyVaultClient.GetSecretAsync("https://msskillslab-keyvault.vault.azure.net/secrets/DBUserName").Result.Value;
             host = keyVaultClient.GetSecretAsync("https://msskillslab-keyvault.vault.azure.net/secrets/DBHost").Result.Value;
@@ -44,7 +43,7 @@ namespace msskillslab.MongoDBHelper
 
             client = new MongoClient(settings);
         }
-
+        
         public static void InitializeSingleton()
         {
             if (instance == null)
